@@ -1,10 +1,7 @@
 from flask_login import LoginManager
 lm = LoginManager()
 
-from flask_restless import APIManager
-api = APIManager()
-
-from flask_heroku import Heroku
+from app.heroku import Heroku
 heroku = Heroku()
 
 from flask_travis import Travis
@@ -27,3 +24,9 @@ assets = Environment()
 
 from flask_babel import Babel
 babel = Babel()
+
+from flask_bootstrap import Bootstrap
+bootstrap = Bootstrap()
+
+from raven.contrib.flask import Sentry
+sentry = Sentry()

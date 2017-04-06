@@ -1,9 +1,9 @@
 ![flasks](https://raw.githubusercontent.com/cburmeister/flask-bones/master/image.jpg)
 
-flask-bones
+flask-docker-starter
 ===========
 
-An example of a large scale Flask application using blueprints and extensions.
+An example of a large scale Flask application using blueprints and extensions. Forked from [flask-bones](https://github.com/cburmeister/flask-bones).
 
 ## Setup with Docker
 
@@ -33,61 +33,6 @@ flaskbones_mailcatcher_1   mailcatcher --smtp-ip=0.0. ...   Up      0.0.0.0:1025
 flaskbones_memcached_1     /entrypoint.sh memcached         Up      0.0.0.0:11211->11211/tcp
 flaskbones_redis_1         /entrypoint.sh redis-server      Up      0.0.0.0:6379->6379/tcp
 ```
-
-## Setup
-
-1. Install required services:
-
-    ```
-    $ brew install memcached
-    $ brew install redis
-    $ brew install postgresql
-    $ gem install mailcatcher
-    ```
-
-2. Install Python packages:
-
-    ```
-    $ make init
-    ```
-
-3. Set necessary environment variables:
-
-    ```
-    $ export SECRET_KEY=46-2346-24986-2384632-2039845-24
-    $ export DATABASE_URL=postgresql://$USER@localhost/flask_bones
-    $ export SERVER_NAME=$HOST:5000
-    ```
-
-4. Install Javascript dependencies:
-
-    ```
-    $ make assets
-    ```
-
-5. Setup database and seed with test data:
-
-    ```
-    $ make db
-    ```
-
-6. Run a local SMTP server:
-
-    ```
-    $ mailcatcher
-    ```
-
-7. Run the celery worker:
-
-    ```
-    $ make celery
-    ```
-
-8. Run local server:
-
-    ```
-    $ make server
-    ```
 
 ## Features
 

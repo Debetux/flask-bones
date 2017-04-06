@@ -2,7 +2,7 @@ app:
     build: .
     command: make server
     volumes:
-        - .:/var/www/flask-bones
+        - .:/var/www/flask-docker-start
     ports:
         - "5000:5000"
     links:
@@ -15,7 +15,7 @@ celery:
     build: .
     command: make celery
     volumes:
-        - .:/var/www/flask-bones
+        - .:/var/www/flask-docker-start
     links:
         - db
         - redis

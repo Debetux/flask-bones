@@ -1,7 +1,8 @@
 from flask import Flask, g, render_template, request
 from app.database import db
 from app.extensions import (
-    lm, api, travis, mail, heroku, bcrypt, celery, babel
+    lm, api, travis, mail, heroku, bcrypt, celery, babel,
+    bootstrap, sentry
 )
 from app.assets import assets
 import app.utils as utils
@@ -41,7 +42,6 @@ def register_extensions(app):
     heroku.init_app(app)
     travis.init_app(app)
     db.init_app(app)
-    api.init_app(app)
     lm.init_app(app)
     mail.init_app(app)
     bcrypt.init_app(app)
@@ -66,3 +66,4 @@ def register_errorhandlers(app):
 def register_jinja_env(app):
     app.jinja_env.globals['url_for_other_page'] = utils.url_for_other_page
     app.jinja_env.globals['timeago'] = utils.timeago
+    app.jinja_env.globals['format_date'] = utils.format_date

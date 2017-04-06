@@ -6,25 +6,25 @@ def populate_db(num_users=5):
     """
     Fills the database with fake data.
     """
-    from faker import Factory
+    # from faker import Factory
     from app.user.models import User
 
-    fake = Factory.create()
+    # fake = Factory.create()
 
     admin_username = 'cburmeister'
     admin_email = 'cburmeister@discogs.com'
     admin_password = 'test123'
 
     users = []
-    for _ in range(int(num_users)):
-        users.append(
-            User(
-                fake.userName(),
-                fake.email(),
-                fake.word() + fake.word(),
-                fake.ipv4()
-            )
-        )
+    # for _ in range(int(num_users)):
+    #     users.append(
+    #         User(
+    #             fake.userName(),
+    #             fake.email(),
+    #             fake.word() + fake.word(),
+    #             fake.ipv4()
+    #         )
+    #     )
 
     users.append(
         User(
@@ -50,7 +50,7 @@ class CRUDMixin(object):
 
     @classmethod
     def get_by_id(cls, id):
-        if any((isinstance(id, basestring) and id.isdigit(),
+        if any((isinstance(id, string_types) and id.isdigit(),
                 isinstance(id, (int, float))),):
             return cls.query.get(int(id))
         return None
@@ -61,7 +61,7 @@ class CRUDMixin(object):
         return instance.save()
 
     def update(self, commit=True, **kwargs):
-        for attr, value in kwargs.iteritems():
+        for attr, value in kwargs.items():
             setattr(self, attr, value)
         return commit and self.save() or self
 

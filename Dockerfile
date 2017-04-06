@@ -1,7 +1,7 @@
-FROM python:2.7.9
+FROM python:latest
 
-RUN mkdir -p /var/www/flask-bones
-WORKDIR /var/www/flask-bones
-ADD requirements.txt /var/www/flask-bones/
+RUN mkdir -p /var/www/flask-docker-starter
+WORKDIR /var/www/flask-docker-starter
+ADD requirements.txt /var/www/flask-docker-starter/
 RUN pip install -r requirements.txt
-ADD . /var/www/flask-bones
+ADD . /var/www/flask-docker-starter

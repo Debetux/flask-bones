@@ -57,7 +57,10 @@ def register():
         s = URLSafeSerializer(current_app.secret_key)
         token = s.dumps(user.id)
 
-        send_registration_email.delay(user, token)
+        send_registration_email.delay({
+            'username': user.username,
+            'email': user.email
+        }, token)
 
         flash(
             gettext(
@@ -95,3 +98,4 @@ def verify(token):
             'success'
         )
         return redirect(url_for('auth.login'))
+
